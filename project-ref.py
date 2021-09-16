@@ -88,7 +88,7 @@ class MyGuiWindow(QtWidgets.QWidget):
 
     def aboutinfo(self):
         QtWidgets.QMessageBox.about(self, 'About program',
-                                    "<center>\"Copy list\" v1.5.5<br><br>"
+                                    "<center>\"CopyPaster\" v1.5.5<br><br>"
                                     "A program for viewing your copy list and using them<br><br>"
                                     "(c) Vojtsitskiy Maksym, 2020")
         self.show()
@@ -99,7 +99,7 @@ class MyGuiWindow(QtWidgets.QWidget):
 
 
 # Class Location of the window
-class Location():
+class Location:
     def __init__(self):
         self.MouseX, self.MouseY = pyautogui.position()
         self.WindowX, self.WindowY = pyautogui.size()
