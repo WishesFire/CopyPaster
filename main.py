@@ -1,24 +1,27 @@
-from PyQt6 import QtWidgets
-import sys
+from PyQt5 import QtWidgets
+from gui.design import MyGuiWindow
+from endpoints.locationManager import Location, located
+from endpoints.keyboardManager import show
 import threading
-import ctypes
-
-ctypes.windll.shell32.SetCurrentProcessExplicitAppUserModelID('mycompany.myproduct.subproduct.version')
+import sys
 
 
 def main():
-    app = QtWidgets.QApplication(sys.argv)
-    window = MyGuiWindow()
+    try:
+        app = QtWidgets.QApplication(sys.argv)
+        window = MyGuiWindow()
 
-    locations = Location()
-    locations.border()
-    locations.border2()
+        locations = Location()
+        locations.border()
+        locations.border2()
+        located(window, locations)
 
-    located(window, locations)
-    window.show()
-    threading.Thread(target=show, args=(window, ), daemon=True).start()
+        window.show()
+        threading.Thread(target=show, args=(window,), daemon=True).start()
+        sys.exit(app.exec_())
 
-    sys.exit(app.exec_())
+    except Exception as error:
+        print(error)
 
 
 if __name__ == '__main__':
